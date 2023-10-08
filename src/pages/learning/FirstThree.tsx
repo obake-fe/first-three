@@ -1,4 +1,5 @@
 import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
 
 const FirstThree = () => {
   return (
@@ -17,6 +18,7 @@ const FirstThree = () => {
         </mesh>
         <ambientLight args={[0xff0000]} intensity={0.1} />
         <directionalLight position={[0, 0, 5]} intensity={0.5} />
+        <OrbitControls />
         <axesHelper args={[20]} />
         <gridHelper args={[20, 20, 0xff0000, 'teal']} />
       </Canvas>
