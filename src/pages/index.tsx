@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import Link from "next/link";
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,9 +16,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <Link href="/learning/FirstThree">
-            1章
-          </Link>
+          <Link href="/learning/FirstThree">1章</Link>
         </div>
       </main>
     </>

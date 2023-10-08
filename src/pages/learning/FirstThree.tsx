@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 
-const  FirstThree = () => {
+const FirstThree = () => {
   return (
     <div className="App">
       <h2>First Render</h2>
