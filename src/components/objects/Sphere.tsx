@@ -1,8 +1,8 @@
 export const Sphere = () => {
   return (
-    <mesh position={[20, 4, 2]}>
+    <mesh position={[20, 4, 2]} castShadow={true}>
       <sphereGeometry args={[4, 20, 20]} />
-      <meshBasicMaterial args={[{ color: 0x7777ff, wireframe: true }]} />
+      <meshLambertMaterial args={[{ color: 0x7777ff }]} />
     </mesh>
   )
 }
