@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Stats } from '@react-three/drei'
 import { Cube, Plane, Sphere } from '@/components/objects'
 
 const FirstThree = () => {
@@ -24,6 +24,7 @@ const FirstThree = () => {
         <OrbitControls />
         <axesHelper args={[20]} />
         <gridHelper args={[20, 20, 0xff0000, 'teal']} />
+        <Stats />
       </Canvas>
     </div>
   )
