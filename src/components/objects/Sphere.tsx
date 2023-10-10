@@ -1,13 +1,17 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
+import { useControls } from 'leva'
 
 export const Sphere = () => {
-  const ref = useRef<any>(null)
+  const { bouncingSpeed } = useControls('Cube', {
+    bouncingSpeed: 0.03
+  })
 
+  const ref = useRef<any>(null)
   let step = 0
 
   useFrame(() => {
-    step += 0.04
+    step += bouncingSpeed
     ref.current.position.x = 20 + 10 * Math.cos(step)
     ref.current.position.y = 2 + 10 * Math.abs(Math.sin(step))
   })
