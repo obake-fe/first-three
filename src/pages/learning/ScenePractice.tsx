@@ -1,6 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Stats } from '@react-three/drei'
-import { Cube, Plane, Sphere } from '@/components/firstThree'
+import { OrbitControls, Stats, Plane } from '@react-three/drei'
 
 const ScenePractice = () => {
   return (
@@ -10,17 +9,21 @@ const ScenePractice = () => {
         onCreated={(state) => state.gl.setClearColor(0xeeeeee)}
         shadows={true}
       >
-        <Sphere />
-        <Plane />
-        <Cube />
+        <Plane
+          args={[60, 40]}
+          position={[0, 0, 0]}
+          rotation={[-0.5 * Math.PI, 0, 0, 'XYZ']}
+          receiveShadow={true}
+        >
+          <meshLambertMaterial color={0xffffff} />
+        </Plane>
         <spotLight
           color={0xffffff}
           position={[-20, 30, -5]}
           intensity={2000}
           castShadow={true}
         />
-        {/*<ambientLight args={[0xff0000]} intensity={0.1} />*/}
-        {/*<directionalLight position={[0, 0, 5]} intensity={0.5} />*/}
+        <ambientLight args={[0x0c0c0c]} intensity={100} />
         <OrbitControls />
         <axesHelper args={[20]} />
         <gridHelper args={[20, 20, 0xff0000, 'teal']} />
