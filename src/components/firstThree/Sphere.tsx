@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { useControls } from 'leva'
 
 export const Sphere = () => {
-  const { bouncingSpeed } = useControls('Cube', {
+  const { bouncingSpeed } = useControls('Sphere', {
     bouncingSpeed: 0.03
   })
 

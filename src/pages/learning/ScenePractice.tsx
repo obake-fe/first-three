@@ -1,5 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stats, Plane } from '@react-three/drei'
+import { RandomCubes } from '@/components/scenePractice/RandomCubes'
 
 const ScenePractice = () => {
   return (
@@ -17,6 +18,7 @@ const ScenePractice = () => {
         >
           <meshLambertMaterial color={0xffffff} />
         </Plane>
+        <RandomCubes />
         <spotLight
           color={0xffffff}
           position={[-20, 30, -5]}
