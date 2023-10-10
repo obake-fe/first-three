@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stats } from '@react-three/drei'
 import { Cube, Plane, Sphere } from '@/components/firstThree'
 
-const FirstThree = () => {
+const ScenePractice = () => {
   return (
     <div className="App">
       <Canvas
@@ -30,4 +30,4 @@ const FirstThree = () => {
   )
 }
 
-export default FirstThree
+export default ScenePractice
