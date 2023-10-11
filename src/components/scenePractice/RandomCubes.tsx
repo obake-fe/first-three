@@ -38,6 +38,16 @@ export const RandomCubes = () => {
         ]
       })
     }),
+    removeCube: button(() => {
+      setCubes((cubes) => {
+        if (cubes.length > 0) {
+          set({ numberOfObjects: cubes.length - 1 })
+          return cubes.slice(0, -1)
+        }
+
+        return cubes
+      })
+    }),
     numberOfObjects: {
       value: 0,
       min: 0,
