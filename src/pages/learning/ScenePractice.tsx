@@ -10,6 +10,7 @@ const ScenePractice = () => {
         onCreated={(state) => state.gl.setClearColor(0xeeeeee)}
         shadows={true}
       >
+        <fog attach="fog" color={0xffffff} near={0.015} far={120} />
         <Plane
           args={[60, 40]}
           position={[0, 0, 0]}
