@@ -1,6 +1,7 @@
 import { button, useControls } from 'leva'
 import { Box } from '@react-three/drei'
-import { useState } from 'react'
+import { createRef, RefObject, useRef, useState } from 'react'
+import { useFrame } from '@react-three/fiber'
 
 type Cube = {
   size: number
@@ -12,7 +13,7 @@ type Cube = {
 export const RandomCubes = () => {
   const [cubes, setCubes] = useState<Cube[]>([])
 
-  const [, set] = useControls('CubeInfo', () => ({
+  const [{ rotationSpeed }, set] = useControls('CubeInfo', () => ({
     // ランダムなCubeを描画する用のpropertyをstateに追加する
     addRandomCube: button(() => {
       setCubes((cubes) => {
@@ -81,18 +82,41 @@ export const RandomCubes = () => {
           }
         })
       }
+    },
+    rotationSpeed: {
+      value: 0.02,
+      min: 0,
+      max: 1,
+      step: 0.01
     }
   }))
 
+  const refs = useRef<RefObject<any>[]>([])
+
+  // cubeの数だけrefを作成する
+  cubes.forEach((_, index) => {
+    refs.current[index] = createRef()
+  })
+
+  useFrame(() => {
+    cubes.forEach((_, index) => {
+      refs.current[index].current.rotation.x += rotationSpeed
+      refs.current[index].current.rotation.y += rotationSpeed
+      refs.current[index].current.rotation.z += rotationSpeed
+    })
+  })
+
   return (
     <>
-      {cubes.map((cube) => {
+      {cubes.map((cube, index) => {
         return (
           <Box
             args={[cube.size, cube.size, cube.size]}
             position={cube.position}
+            rotation={[rotationSpeed, rotationSpeed, rotationSpeed]}
             castShadow={true}
             key={cube.name}
+            ref={refs.current[index]}
           >
             <meshLambertMaterial color={cube.color} />
           </Box>
