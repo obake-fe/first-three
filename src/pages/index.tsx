@@ -18,6 +18,7 @@ export default function Home() {
         <div className={styles.description}>
           <Link href="/learning/FirstThree">1章 初めての3Dシーン作成</Link>
           <Link href="/learning/ScenePractice">2章 シーンの基本要素</Link>
+          <Link href="/learning/LightPractice">3章 光源</Link>
         </div>
       </main>
     </>
