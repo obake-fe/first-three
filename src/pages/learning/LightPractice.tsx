@@ -1,22 +1,9 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stats } from '@react-three/drei'
 import { Cube, Plane, Sphere } from '@/components/lightPractice'
-import { folder, useControls } from 'leva'
+import { Light } from '@/components/lightPractice/Light'
 
 const FirstThree = () => {
-  const [{ color, intensity, visible }] = useControls('Light', () => ({
-    ambientLight: folder({
-      color: '#ffffff',
-      intensity: {
-        value: 0.1,
-        max: 100,
-        min: 0,
-        step: 0.1
-      },
-      visible: true
-    })
-  }))
-
   return (
     <div className="App">
       <Canvas
@@ -27,14 +14,7 @@ const FirstThree = () => {
         <Sphere />
         <Plane />
         <Cube />
-        {/*<spotLight*/}
-        {/*  color={0xffffff}*/}
-        {/*  position={[-20, 30, -5]}*/}
-        {/*  intensity={2000}*/}
-        {/*  castShadow={true}*/}
-        {/*/>*/}
-        <ambientLight args={[color]} intensity={intensity} visible={visible} />
-        {/*<directionalLight position={[0, 0, 5]} intensity={0.5} />*/}
+        <Light />
         <OrbitControls />
         <axesHelper args={[20]} />
         <gridHelper args={[20, 20, 0xff0000, 'teal']} />
