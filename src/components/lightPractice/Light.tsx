@@ -1,7 +1,8 @@
 import { useRef } from 'react'
 import { folder, useControls } from 'leva'
 import { useHelper } from '@react-three/drei'
-import { PointLightHelper } from 'three'
+import { PointLight, PointLightHelper } from 'three'
+import { useFrame } from '@react-three/fiber'
 
 export const Light = () => {
   const [
@@ -41,8 +42,13 @@ export const Light = () => {
     })
   }))
 
-  const pointLight = useRef<any>()
+  const pointLight = useRef<PointLight>(null!)
   useHelper(pointLight, PointLightHelper, 0.5, 'hotpink')
+
+  useFrame(({ clock }) => {
+    pointLight.current.position.x = 10 * Math.sin(clock.elapsedTime) // elapsedTimeの単位は秒
+    pointLight.current.position.z = 10 * Math.cos(clock.elapsedTime)
+  })
 
   return (
     <>
