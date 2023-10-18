@@ -1,13 +1,14 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useControls } from 'leva'
+import { Mesh } from 'three'
 
 export const Cube = () => {
   const { rotationSpeed } = useControls('Cube', {
     rotationSpeed: 0.02
   })
 
-  const ref = useRef<any>(null)
+  const ref = useRef<Mesh>(null!)
 
   useFrame(() => {
     ref.current.rotation.x += rotationSpeed

@@ -1,13 +1,14 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useControls } from 'leva'
+import { Mesh } from 'three'
 
 export const Sphere = () => {
   const { bouncingSpeed } = useControls('Sphere', {
     bouncingSpeed: 0.03
   })
 
-  const ref = useRef<any>(null)
+  const ref = useRef<Mesh>(null!)
   let step = 0
 
   useFrame(() => {
